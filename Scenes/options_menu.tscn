@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcp3tlajo26wr"]
+
+[ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_6fhqt"]
+[ext_resource type="FontFile" uid="uid://c234l5ytrif6l" path="res://Fonts/LightStories-V44KZ.ttf" id="2_1e5e7"]
+
+[node name="Options_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6fhqt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 1.0
+offset_right = 591.0
+offset_bottom = 602.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1e5e7")
+theme_override_font_sizes/font_size = 64
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicHSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -60.0
+max_value = 0.0
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "FX Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FXHSlider2" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -60.0
+max_value = 0.0
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Disable Screen Shake"
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Exit"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MusicHSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/FXHSlider2" to="." method="_on_fxh_slider_2_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

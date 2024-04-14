@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://4f52ayte0o3n"]
+[gd_scene load_steps=13 format=3 uid="uid://4f52ayte0o3n"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenuController.gd" id="1_a41hu"]
 [ext_resource type="PackedScene" uid="uid://c222oad4csdrv" path="res://Scenes/summoning_circle.tscn" id="2_e8kwg"]
+[ext_resource type="FontFile" uid="uid://c234l5ytrif6l" path="res://Fonts/LightStories-V44KZ.ttf" id="3_poou1"]
 [ext_resource type="Texture2D" uid="uid://bu33co6pvdv7f" path="res://Items/chalice.png" id="3_qcskh"]
 [ext_resource type="Texture2D" uid="uid://dnqediea5wv8y" path="res://Items/herbs.png" id="4_vfiy5"]
 [ext_resource type="Texture2D" uid="uid://n3fsusm51mu4" path="res://Items/crystal.png" id="5_r8w5j"]
 [ext_resource type="Texture2D" uid="uid://br78woljwj7ic" path="res://Items/salt.png" id="6_ne7qf"]
 [ext_resource type="Texture2D" uid="uid://clqrxmooad3pj" path="res://Images/dagger.png" id="7_77u4u"]
+[ext_resource type="AudioStream" uid="uid://yafxan127jfu" path="res://Sounds/click.wav" id="8_v5bmq"]
 
 [sub_resource type="Theme" id="Theme_xqskb"]
 
@@ -38,7 +40,16 @@ theme = SubResource("Theme_xqskb")
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ylt2o")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jkbhi")
-text = "Play"
+text = "Play Story Mode"
+
+[node name="EndlessPlayButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(256, 40)
+layout_mode = 2
+theme = SubResource("Theme_xqskb")
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ylt2o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jkbhi")
+text = "Play Endless Mode"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(256, 40)
@@ -56,7 +67,7 @@ theme = SubResource("Theme_xqskb")
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ylt2o")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jkbhi")
-text = "Instructions"
+text = "Book of Instructions"
 
 [node name="SolutionsPlayButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(256, 40)
@@ -65,7 +76,7 @@ theme = SubResource("Theme_xqskb")
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ylt2o")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jkbhi")
-text = "Solutions"
+text = "Book of Solutions"
 
 [node name="CreditsPlayButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(256, 40)
@@ -74,7 +85,7 @@ theme = SubResource("Theme_xqskb")
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ylt2o")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jkbhi")
-text = "Credits"
+text = "Book of Credits"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(256, 40)
@@ -91,7 +102,10 @@ offset_top = 60.0
 offset_right = 915.0
 offset_bottom = 99.0
 theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("3_poou1")
+theme_override_font_sizes/font_size = 32
 text = "The Summoning Circle"
+horizontal_alignment = 1
 
 [node name="Chalice" type="Sprite2D" parent="."]
 position = Vector2(286, 62)
@@ -113,7 +127,11 @@ texture = ExtResource("6_ne7qf")
 position = Vector2(410, 420)
 texture = ExtResource("7_77u4u")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_v5bmq")
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/EndlessPlayButton" to="." method="_on_endless_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/InstructionsButton" to="." method="_on_instructions_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SolutionsPlayButton" to="." method="_on_solutions_play_button_pressed"]

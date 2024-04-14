@@ -1,0 +1,268 @@
+[gd_scene load_steps=15 format=3 uid="uid://cvwwsamfyk1pt"]
+
+[ext_resource type="Script" path="res://Scripts/EndlessSceneController.gd" id="1_ar2ih"]
+[ext_resource type="PackedScene" uid="uid://c222oad4csdrv" path="res://Scenes/summoning_circle.tscn" id="3_anr74"]
+[ext_resource type="Texture2D" uid="uid://buljkowa7m14w" path="res://Images/progress_bar.png" id="4_t6y8d"]
+[ext_resource type="Texture2D" uid="uid://dhm4g2xjb2w8" path="res://Images/progress_bar_outline.png" id="5_scet6"]
+[ext_resource type="PackedScene" uid="uid://bfstr68wuniam" path="res://Items/inv_ui_2d.tscn" id="6_v8sd2"]
+[ext_resource type="PackedScene" uid="uid://bjywmc0pf7e61" path="res://Scenes/book_of_shadows.tscn" id="7_wmbik"]
+[ext_resource type="AudioStream" uid="uid://bkj006jnts1s0" path="res://Sounds/summon.ogg" id="8_10mxp"]
+[ext_resource type="Texture2D" uid="uid://bu33co6pvdv7f" path="res://Items/chalice.png" id="9_m5udt"]
+[ext_resource type="Texture2D" uid="uid://dllnkviwqat5m" path="res://Images/dialog_back.png" id="9_ncj6h"]
+[ext_resource type="Texture2D" uid="uid://0e7b2s8bb1hf" path="res://Images/candle.png" id="9_uo2os"]
+[ext_resource type="Texture2D" uid="uid://clqrxmooad3pj" path="res://Images/dagger.png" id="10_8byog"]
+[ext_resource type="Texture2D" uid="uid://n3fsusm51mu4" path="res://Items/crystal.png" id="12_t0r4c"]
+[ext_resource type="Texture2D" uid="uid://br78woljwj7ic" path="res://Items/salt.png" id="13_af7yt"]
+[ext_resource type="Texture2D" uid="uid://dnqediea5wv8y" path="res://Items/herbs.png" id="14_g31r7"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ar2ih")
+
+[node name="SummoningCircle" parent="." instance=ExtResource("3_anr74")]
+position = Vector2(285, 261.5)
+scale = Vector2(0.872, 0.822)
+
+[node name="SpawnButton" type="Button" parent="."]
+offset_left = 255.0
+offset_top = 526.0
+offset_right = 333.0
+offset_bottom = 557.0
+text = "Summon"
+
+[node name="SummonProgress" type="TextureProgressBar" parent="."]
+offset_left = 94.0
+offset_top = 480.0
+offset_right = 494.0
+offset_bottom = 520.0
+texture_under = ExtResource("4_t6y8d")
+texture_over = ExtResource("5_scet6")
+texture_progress = ExtResource("4_t6y8d")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.690196, 0.282353, 0.0823529, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(482, 297)
+
+[node name="inv_ui_2d" parent="." instance=ExtResource("6_v8sd2")]
+position = Vector2(774, 280)
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 708.0
+offset_top = 433.0
+offset_right = 851.0
+offset_bottom = 464.0
+text = "Exit"
+
+[node name="book_of_shadows" parent="." instance=ExtResource("7_wmbik")]
+visible = false
+z_index = 4
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 37.0
+offset_bottom = 35.0
+
+[node name="SummonAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_10mxp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SuccessPanel" type="Panel" parent="."]
+visible = false
+z_index = 4
+offset_right = 964.0
+offset_bottom = 599.0
+
+[node name="ColorRect" type="ColorRect" parent="SuccessPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="SuccessPanel/ColorRect"]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 147.0
+offset_right = 542.0
+offset_bottom = 318.0
+theme_type_variation = &"HeaderLarge"
+text = "0 successful summons"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SContinueButton" type="Button" parent="SuccessPanel/ColorRect"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 348.0
+offset_right = 368.0
+offset_bottom = 379.0
+text = "Continue"
+
+[node name="SExitButton" type="Button" parent="SuccessPanel/ColorRect"]
+layout_mode = 0
+offset_left = 545.0
+offset_top = 352.0
+offset_right = 582.0
+offset_bottom = 383.0
+text = "Exit"
+
+[node name="SpawnDialog" type="NinePatchRect" parent="."]
+visible = false
+z_index = 4
+offset_left = 75.0
+offset_top = 4.0
+offset_right = 498.0
+offset_bottom = 155.0
+texture = ExtResource("9_ncj6h")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="spawn_text" type="Label" parent="SpawnDialog"]
+z_index = 2
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 415.0
+offset_bottom = 144.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0.203922, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SummonerDialog" type="NinePatchRect" parent="."]
+visible = false
+z_index = 4
+offset_left = 56.0
+offset_top = 357.0
+offset_right = 516.0
+offset_bottom = 481.0
+texture = ExtResource("9_ncj6h")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="summoner_text" type="Label" parent="SummonerDialog"]
+layout_mode = 0
+offset_right = 460.0
+offset_bottom = 120.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+z_index = 6
+offset_left = 35.0
+offset_top = 9.0
+offset_right = 937.0
+offset_bottom = 507.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ColorRect"]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 14.0
+offset_right = 594.0
+offset_bottom = 477.0
+theme_override_constants/separation = 24
+
+[node name="Control" type="Control" parent="Panel/ColorRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ColorRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_uo2os")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_8byog")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_m5udt")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_t0r4c")
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_af7yt")
+stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_g31r7")
+stretch_mode = 2
+
+[node name="VContinueButton" type="Button" parent="Panel/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/ColorRect/HBoxContainer"]
+layout_mode = 2
+
+[node name="ResultRect1" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ResultRect2" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ResultRect3" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ResultRect4" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ResultRect5" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ResultRect6" type="TextureRect" parent="Panel/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VExitButton" type="Button" parent="Panel/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Exit"
+
+[node name="SuccessfulSummons" type="Label" parent="."]
+offset_left = 693.0
+offset_top = 38.0
+offset_right = 867.0
+offset_bottom = 152.0
+theme_type_variation = &"HeaderMedium"
+text = "Successful Summons"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="button_down" from="SpawnButton" to="." method="_on_spawn_button_button_down"]
+[connection signal="button_up" from="SpawnButton" to="." method="_on_spawn_button_button_up"]
+[connection signal="value_changed" from="SummonProgress" to="." method="_on_summon_progress_value_changed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="SuccessPanel/ColorRect/SContinueButton" to="." method="_on_s_continue_button_pressed"]
+[connection signal="pressed" from="SuccessPanel/ColorRect/SExitButton" to="." method="_on_s_exit_button_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/HBoxContainer/VBoxContainer/VContinueButton" to="." method="_on_v_continue_button_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/HBoxContainer/VBoxContainer2/VExitButton" to="." method="_on_v_exit_button_pressed"]

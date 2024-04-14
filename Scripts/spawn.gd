@@ -54,7 +54,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if id == 1 or id == 3:
+	if id == 1 or id == 3 or id == 4 or id == 5:
 		var tween = get_tree().create_tween()
 		var randX = rng.randf_range(-50.0, 50.0)
 		var randY = rng.randf_range(-50.0, 50.0)
@@ -63,11 +63,11 @@ func _process(delta):
 	
 func _input(event):
 	if event is InputEventMouseButton:
-		print("Button")
+		#print("Button")
 		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-			print("Right Button")
+			#print("Right Button")
 			if get_rect().has_point(to_local(event.position)):
-				print("on spawn")
+				#print("on spawn")
 				Global.spawn_active = false
 				queue_free()
 	

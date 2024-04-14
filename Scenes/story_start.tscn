@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5iibqy135b5"]
+
+[ext_resource type="Script" path="res://stroy_start.gd" id="1_0r5q6"]
+[ext_resource type="AudioStream" uid="uid://yafxan127jfu" path="res://Sounds/click.wav" id="2_3n5gu"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0r5q6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 962.0
+offset_bottom = 603.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 40.0
+offset_right = 809.0
+offset_bottom = 393.0
+theme_type_variation = &"HeaderLarge"
+text = "You have an important question that needs answering.
+Summon entities to find the answer.
+Look in the Book of Shadows for information on the correct arrangement for a successful summon.
+
+New pages are added after a successful summons"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 449.0
+offset_right = 486.0
+offset_bottom = 480.0
+text = "Continue"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3n5gu")
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]

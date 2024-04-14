@@ -1,5 +1,7 @@
 extends Sprite2D
 
+var place_sound = preload("res://Sounds/place.wav")
+var place_altar_sound = preload("res://Sounds/place_altar.wav")
 var group := "dragable"
 var is_dragging = false;
 var mouse_offset
@@ -11,6 +13,7 @@ var item_location
 
 
 func _ready():
+	$AudioStreamPlayer.volume_db = Global.fxVolume
 	add_to_group(group)
 	drop_spots = get_tree().get_nodes_in_group(("drop_spot_group"))
 
@@ -21,7 +24,7 @@ func _physics_process(_delta):
 		#tween.tween_property(self,"position", get_global_mouse_position(),delay * delta)
 func _input(event):
 	if !Global.spawn_active and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		print("d_input_mouse")
+		#print("d_input_mouse")
 		if not event.pressed and is_dragging:
 			is_dragging = false
 			var found_dropspot = false
@@ -29,22 +32,24 @@ func _input(event):
 				if drop_spot.has_overlapping_areas() and drop_spot.get_overlapping_areas().has(self.get_node("Area2D")):
 					var snap_position = drop_spot.global_position
 					position = snap_position
-					print("set postion " + str(drop_spot.location))
+					#print("set postion " + str(drop_spot.location))
 					item_location = drop_spot.location
 					Global.object_at_postion[id] = drop_spot.location
 					found_dropspot = true
-					
+					$AudioStreamPlayer.stream = place_sound
+					$AudioStreamPlayer.play()
 			if !found_dropspot:
 				position = inventory_location
 				item_location = 0
 				Global.object_at_postion[id] = 0
-
+				$AudioStreamPlayer.stream = place_altar_sound
+				$AudioStreamPlayer.play()
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if !Global.spawn_active and Input.is_action_just_pressed("click"):
-		print("click")
+		#print("click")
 		if _is_on_top():
-			print("click on top")
+			#print("click on top")
 			is_dragging = true
 		
 func _is_on_top() -> bool:

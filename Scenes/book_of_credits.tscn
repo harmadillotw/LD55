@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv7v8uyt3vgv"]
+
+[ext_resource type="Script" path="res://Scenes/book_of_credits.gd" id="1_iht3l"]
+[ext_resource type="Texture2D" uid="uid://bhpjbij6e3oox" path="res://Images/book.png" id="2_i5vwa"]
+[ext_resource type="FontFile" uid="uid://c234l5ytrif6l" path="res://Fonts/LightStories-V44KZ.ttf" id="3_1t7po"]
+[ext_resource type="AudioStream" uid="uid://yafxan127jfu" path="res://Sounds/click.wav" id="3_piirf"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_iht3l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -22.0
+offset_right = 1008.0
+offset_bottom = 629.0
+color = Color(0, 0, 0, 1)
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 549.0
+offset_right = 515.0
+offset_bottom = 580.0
+text = "Exit"
+
+[node name="BookSprite" type="Sprite2D" parent="."]
+position = Vector2(522.5, 300.5)
+scale = Vector2(1.33375, 1.2325)
+texture = ExtResource("2_i5vwa")
+
+[node name="HeaderLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 959.0
+offset_bottom = 67.0
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("3_1t7po")
+theme_override_font_sizes/font_size = 64
+text = "Book Of Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextLabelLeft" type="Label" parent="."]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 122.0
+offset_right = 438.0
+offset_bottom = 439.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Created
+By
+Harmadillo"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabelRight" type="Label" parent="."]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 123.0
+offset_right = 865.0
+offset_bottom = 440.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Tools Used
+
+Godot
+Paint.net
+Bosca Ceoil
+sfxr
+jsfxr
+Audacity
+
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PageLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 429.0
+offset_right = 958.0
+offset_bottom = 501.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1/1"
+horizontal_alignment = 1
+
+[node name="Sprite2DLeft" type="Sprite2D" parent="."]
+position = Vector2(261, 267)
+
+[node name="Sprite2DRight" type="Sprite2D" parent="."]
+position = Vector2(687, 267)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_piirf")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbsmrothbi1do"]
+[gd_scene load_steps=5 format=3 uid="uid://dbsmrothbi1do"]
 
 [ext_resource type="Script" path="res://Scripts/TitleScreenScene.gd" id="1_841ty"]
 [ext_resource type="Texture2D" uid="uid://3onkil3kpa8n" path="res://Images/cover.JPG" id="2_dvbv6"]
+[ext_resource type="FontFile" uid="uid://c234l5ytrif6l" path="res://Fonts/LightStories-V44KZ.ttf" id="2_fy1ee"]
+[ext_resource type="FontFile" uid="uid://bfoqdivjihlhc" path="res://Fonts/AgreementSignature-qZX6x.ttf" id="3_jqyvs"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_841ty")
@@ -20,6 +22,8 @@ offset_top = 22.0
 offset_right = 960.0
 offset_bottom = 91.0
 theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("2_fy1ee")
+theme_override_font_sizes/font_size = 64
 text = "The Summoning Circle"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -30,16 +34,18 @@ offset_top = 90.0
 offset_right = 960.0
 offset_bottom = 167.0
 theme_type_variation = &"HeaderMedium"
-text = "A small puzzle game"
+text = "A puzzle game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CreditLabel" type="Label" parent="."]
 offset_left = -3.0
 offset_top = 519.0
-offset_right = 956.0
+offset_right = 938.0
 offset_bottom = 596.0
 theme_type_variation = &"HeaderMedium"
+theme_override_fonts/font = ExtResource("3_jqyvs")
+theme_override_font_sizes/font_size = 32
 text = "by Harmadillo"
 horizontal_alignment = 2
 vertical_alignment = 1

@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="LD 55"
-run/main_scene="res://Scenes/MainScene.tscn"
+run/main_scene="res://Scenes/TitleScreenScene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+MusicStreamPlayer="*res://Scenes/audio_stream_player.tscn"
 
 [display]
 

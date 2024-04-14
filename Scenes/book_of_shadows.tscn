@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjywmc0pf7e61"]
+[gd_scene load_steps=5 format=3 uid="uid://bjywmc0pf7e61"]
 
-[ext_resource type="Script" path="res://Scenes/book_of_shadows.gd" id="1_88s2s"]
+[ext_resource type="Script" path="res://Scripts/book_of_shadows.gd" id="1_quxh4"]
 [ext_resource type="Texture2D" uid="uid://bhpjbij6e3oox" path="res://Images/book.png" id="2_ydsyl"]
+[ext_resource type="AudioStream" uid="uid://yafxan127jfu" path="res://Sounds/click.wav" id="3_8kl5y"]
+[ext_resource type="FontFile" uid="uid://c234l5ytrif6l" path="res://Fonts/LightStories-V44KZ.ttf" id="3_atved"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_88s2s")
+script = ExtResource("1_quxh4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -54,6 +56,8 @@ offset_top = -3.0
 offset_right = 959.0
 offset_bottom = 67.0
 theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("3_atved")
+theme_override_font_sizes/font_size = 64
 text = "Book Of Shadows"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -83,11 +87,11 @@ autowrap_mode = 2
 
 [node name="PageLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 466.0
-offset_right = 961.0
-offset_bottom = 538.0
+offset_top = 439.0
+offset_right = 960.0
+offset_bottom = 511.0
 theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "1/1"
 horizontal_alignment = 1
 
@@ -96,6 +100,9 @@ position = Vector2(261, 267)
 
 [node name="Sprite2DRight" type="Sprite2D" parent="."]
 position = Vector2(687, 267)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8kl5y")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdnmsdmbqfkxy"]
+
+[ext_resource type="Texture2D" uid="uid://c7g7pg0gomdt4" path="res://Images/solutions/eyemonster.png" id="1_gqibx"]
+[ext_resource type="Script" path="res://Scenes/end_story.gd" id="1_nbghb"]
+[ext_resource type="Texture2D" uid="uid://c7qbk2dsa41gi" path="res://Images/Demon.png" id="2_jy8a7"]
+[ext_resource type="Texture2D" uid="uid://crvj1037ieafk" path="res://Images/ghost_ph.png" id="3_rbvxm"]
+[ext_resource type="Texture2D" uid="uid://cj7no42ux3y4x" path="res://Images/ghost2_ph.png" id="4_gdr1b"]
+[ext_resource type="Texture2D" uid="uid://dayj1fty3hcnd" path="res://Images/mantis.png" id="5_k1dak"]
+[ext_resource type="Texture2D" uid="uid://ddqa13ymbm6sd" path="res://Images/tentacle.png" id="6_oiwl1"]
+[ext_resource type="AudioStream" uid="uid://yafxan127jfu" path="res://Sounds/click.wav" id="8_dii4l"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nbghb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 50.0
+offset_right = 817.0
+offset_bottom = 220.0
+theme_type_variation = &"HeaderLarge"
+text = "The keys have been successfully retrieved. The story is now over. 
+
+Thank you for playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 435.0
+offset_right = 495.0
+offset_bottom = 468.0
+text = "Exit
+"
+
+[node name="Eyemonster" type="Sprite2D" parent="."]
+position = Vector2(827, 224)
+texture = ExtResource("1_gqibx")
+
+[node name="Demon" type="Sprite2D" parent="."]
+position = Vector2(694, 480)
+texture = ExtResource("2_jy8a7")
+
+[node name="GhostPh" type="Sprite2D" parent="."]
+position = Vector2(110, 356)
+texture = ExtResource("3_rbvxm")
+
+[node name="Ghost2Ph" type="Sprite2D" parent="."]
+position = Vector2(554, 310)
+texture = ExtResource("4_gdr1b")
+
+[node name="Mantis" type="Sprite2D" parent="."]
+position = Vector2(275, 486)
+texture = ExtResource("5_k1dak")
+
+[node name="Tentacle" type="Sprite2D" parent="."]
+position = Vector2(226, 188)
+texture = ExtResource("6_oiwl1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dii4l")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
