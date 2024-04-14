@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbyfq30y1yars"]
+
+[ext_resource type="Texture2D" uid="uid://c2wnyg30qxn86" path="res://Items/inv_slot.png" id="1_8kukr"]
+
+[sub_resource type="GDScript" id="GDScript_e1qjl"]
+script/source = "extends Panel
+
+
+
+"
+
+[node name="inv_ui_slot" type="Panel"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = SubResource("GDScript_e1qjl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_8kukr")
+centered = false

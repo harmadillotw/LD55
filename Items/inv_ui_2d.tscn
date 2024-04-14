@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfstr68wuniam"]
+
+[ext_resource type="Script" path="res://Items/Inv_UI.gd" id="1_a2x33"]
+[ext_resource type="Texture2D" uid="uid://blnf8g7xy3t8n" path="res://Items/inv_back_large.png" id="2_bdiaf"]
+[ext_resource type="PackedScene" uid="uid://bbqlbjmrtcb3c" path="res://Items/ui_slot_2d.tscn" id="3_l8qfq"]
+
+[node name="inv_ui_2d" type="Node2D"]
+script = ExtResource("1_a2x33")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.25, 0)
+scale = Vector2(1.44922, 1)
+texture = ExtResource("2_bdiaf")
+
+[node name="ui_slot_1" parent="." instance=ExtResource("3_l8qfq")]
+position = Vector2(-38, -64)
+scale = Vector2(1.30469, 1)
+
+[node name="ui_slot_2" parent="." instance=ExtResource("3_l8qfq")]
+position = Vector2(44, -64)
+scale = Vector2(1.30469, 1)
+
+[node name="ui_slot_3" parent="." instance=ExtResource("3_l8qfq")]
+position = Vector2(-38, 0)
+scale = Vector2(1.30469, 1)
+
+[node name="ui_slot_4" parent="." instance=ExtResource("3_l8qfq")]
+position = Vector2(44, 0)
+scale = Vector2(1.30469, 1)
+
+[node name="ui_slot_5" parent="." instance=ExtResource("3_l8qfq")]
+position = Vector2(-38, 64)
+scale = Vector2(1.30469, 1)
+
+[node name="ui_slot_6" parent="." instance=ExtResource("3_l8qfq")]
+position = Vector2(44, 64)
+scale = Vector2(1.30469, 1)

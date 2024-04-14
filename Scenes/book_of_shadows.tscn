@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjywmc0pf7e61"]
+
+[ext_resource type="Script" path="res://Scenes/book_of_shadows.gd" id="1_88s2s"]
+[ext_resource type="Texture2D" uid="uid://bhpjbij6e3oox" path="res://Images/book.png" id="2_ydsyl"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_88s2s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -22.0
+offset_right = 1008.0
+offset_bottom = 629.0
+color = Color(0, 0, 0, 1)
+
+[node name="PreviousButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 554.0
+offset_right = 364.0
+offset_bottom = 585.0
+text = "Previous"
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 581.0
+offset_top = 553.0
+offset_right = 656.0
+offset_bottom = 584.0
+text = "Next"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 559.0
+offset_right = 915.0
+offset_bottom = 590.0
+text = "Exit"
+
+[node name="BookSprite" type="Sprite2D" parent="."]
+position = Vector2(522.5, 300.5)
+scale = Vector2(1.33375, 1.2325)
+texture = ExtResource("2_ydsyl")
+
+[node name="HeaderLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 959.0
+offset_bottom = 67.0
+theme_type_variation = &"HeaderLarge"
+text = "Book Of Shadows"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextLabelLeft" type="Label" parent="."]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 122.0
+offset_right = 438.0
+offset_bottom = 439.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Book Of Shadows"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabelRight" type="Label" parent="."]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 123.0
+offset_right = 865.0
+offset_bottom = 440.0
+theme_type_variation = &"HeaderMedium"
+text = "Book Of Shadows"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PageLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 466.0
+offset_right = 961.0
+offset_bottom = 538.0
+theme_type_variation = &"HeaderMedium"
+text = "1/1"
+horizontal_alignment = 1
+
+[node name="Sprite2DLeft" type="Sprite2D" parent="."]
+position = Vector2(261, 267)
+
+[node name="Sprite2DRight" type="Sprite2D" parent="."]
+position = Vector2(687, 267)
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

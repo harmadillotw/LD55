@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbsmrothbi1do"]
+
+[ext_resource type="Script" path="res://Scripts/TitleScreenScene.gd" id="1_841ty"]
+[ext_resource type="Texture2D" uid="uid://3onkil3kpa8n" path="res://Images/cover.JPG" id="2_dvbv6"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_841ty")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -43.0
+offset_top = -51.0
+offset_right = 1244.0
+offset_bottom = 721.0
+color = Color(0, 0, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 22.0
+offset_right = 960.0
+offset_bottom = 91.0
+theme_type_variation = &"HeaderLarge"
+text = "The Summoning Circle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel2" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 90.0
+offset_right = 960.0
+offset_bottom = 167.0
+theme_type_variation = &"HeaderMedium"
+text = "A small puzzle game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditLabel" type="Label" parent="."]
+offset_left = -3.0
+offset_top = 519.0
+offset_right = 956.0
+offset_bottom = 596.0
+theme_type_variation = &"HeaderMedium"
+text = "by Harmadillo"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(489, 378)
+scale = Vector2(0.674397, 0.698312)
+texture = ExtResource("2_dvbv6")

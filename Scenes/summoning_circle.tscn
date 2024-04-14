@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c222oad4csdrv"]
+
+[ext_resource type="Texture2D" uid="uid://byi3hs1j81xl6" path="res://Images/SummoningCircle2.png" id="1_n3sg1"]
+[ext_resource type="PackedScene" uid="uid://dop7wia1p4ykt" path="res://Scenes/drop_spot.tscn" id="2_jnnoy"]
+
+[node name="SummoningCircle" type="Sprite2D"]
+position = Vector2(317, 306)
+texture = ExtResource("1_n3sg1")
+
+[node name="DropSpot" parent="." instance=ExtResource("2_jnnoy")]
+position = Vector2(1, -244)
+location = 1
+
+[node name="DropSpot2" parent="." instance=ExtResource("2_jnnoy")]
+position = Vector2(236, -78)
+location = 2
+
+[node name="DropSpot3" parent="." instance=ExtResource("2_jnnoy")]
+position = Vector2(146, 195)
+location = 3
+
+[node name="DropSpot4" parent="." instance=ExtResource("2_jnnoy")]
+position = Vector2(-144, 198)
+location = 4
+
+[node name="DropSpot5" parent="." instance=ExtResource("2_jnnoy")]
+position = Vector2(-234, -77)
+location = 5
+
+[node name="Spawn_location" type="Node2D" parent="."]

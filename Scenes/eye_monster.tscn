@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://d13yg3uqitgdq"]
+
+[ext_resource type="Texture2D" uid="uid://leu5xa56fahh" path="res://Images/eye_monster.png" id="1_f142k"]
+[ext_resource type="Script" path="res://Scripts/spawn.gd" id="2_0lmtr"]
+[ext_resource type="Texture2D" uid="uid://ddlolubqg2qip" path="res://Images/eye1.png" id="2_cpinj"]
+[ext_resource type="Texture2D" uid="uid://c2c1hnh77ksxq" path="res://Images/eye2.png" id="3_5rp4g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjx4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cpinj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cpinj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cpinj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cpinj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cpinj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cpinj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5rp4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5rp4g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_f142k")
+script = ExtResource("2_0lmtr")
+
+[node name="AnimatedSprite2D1" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.191547
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-19, -21)
+scale = Vector2(0.90625, 0.875)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, -52)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(25, -27.5)
+scale = Vector2(1.3125, 1.21875)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+position = Vector2(-45, -27.5)
+scale = Vector2(0.6875, 0.71875)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="."]
+position = Vector2(-20, 31)
+scale = Vector2(0.6875, 0.71875)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="."]
+position = Vector2(45, -71)
+scale = Vector2(0.6875, 0.71875)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
+position = Vector2(21.5, 11)
+scale = Vector2(0.71875, 0.8125)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
+position = Vector2(-52.5, 7)
+scale = Vector2(0.78125, 0.875)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
+position = Vector2(52, -47)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="."]
+position = Vector2(-37, -66)
+scale = Vector2(0.65625, 0.84375)
+sprite_frames = SubResource("SpriteFrames_fjx4r")
+frame_progress = 0.598666

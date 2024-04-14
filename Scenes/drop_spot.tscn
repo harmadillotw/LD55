@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dop7wia1p4ykt"]
+
+[ext_resource type="Script" path="res://Scripts/drop_spot.gd" id="1_mm17l"]
+[ext_resource type="Texture2D" uid="uid://ccrlsttu52nqq" path="res://Images/circle.png" id="1_w60v6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wy03p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aw8ia"]
+radius = 34.0147
+
+[node name="DropSpot" type="Area2D" groups=["drop_spot_group"]]
+script = ExtResource("1_mm17l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_w60v6")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(7.34163, 37.2902)
+scale = Vector2(-20.9668, -22.4449)
+mesh = SubResource("SphereMesh_wy03p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_aw8ia")

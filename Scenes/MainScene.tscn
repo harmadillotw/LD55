@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4xi57j8x4tms"]
+
+[ext_resource type="PackedScene" uid="uid://c222oad4csdrv" path="res://Scenes/summoning_circle.tscn" id="1_gs3xd"]
+[ext_resource type="Script" path="res://Scenes/MainSceneController.gd" id="1_spnmw"]
+[ext_resource type="Resource" uid="uid://dpw5juylenku3" path="res://Items/inventory.tres" id="2_knsem"]
+[ext_resource type="Texture2D" uid="uid://buljkowa7m14w" path="res://Images/progress_bar.png" id="4_v4buf"]
+[ext_resource type="Texture2D" uid="uid://dhm4g2xjb2w8" path="res://Images/progress_bar_outline.png" id="5_ngxj6"]
+[ext_resource type="PackedScene" uid="uid://bfstr68wuniam" path="res://Items/inv_ui_2d.tscn" id="6_ysupv"]
+[ext_resource type="PackedScene" uid="uid://bjywmc0pf7e61" path="res://Scenes/book_of_shadows.tscn" id="7_lhnra"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_spnmw")
+inv = ExtResource("2_knsem")
+
+[node name="SummoningCircle" parent="." instance=ExtResource("1_gs3xd")]
+position = Vector2(285, 261.5)
+scale = Vector2(0.872, 0.822)
+
+[node name="SpawnButton" type="Button" parent="."]
+offset_left = 255.0
+offset_top = 526.0
+offset_right = 333.0
+offset_bottom = 557.0
+text = "Summon"
+
+[node name="SummonProgress" type="TextureProgressBar" parent="."]
+offset_left = 94.0
+offset_top = 480.0
+offset_right = 494.0
+offset_bottom = 520.0
+texture_under = ExtResource("4_v4buf")
+texture_over = ExtResource("5_ngxj6")
+texture_progress = ExtResource("4_v4buf")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.690196, 0.282353, 0.0823529, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(482, 297)
+
+[node name="inv_ui_2d" parent="." instance=ExtResource("6_ysupv")]
+position = Vector2(774, 280)
+
+[node name="spawn_text" type="Label" parent="."]
+z_index = 2
+offset_left = 51.0
+offset_top = 91.0
+offset_right = 520.0
+offset_bottom = 195.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0.203922, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="summoner_text" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 357.0
+offset_right = 516.0
+offset_bottom = 446.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+offset_left = 708.0
+offset_top = 76.0
+offset_right = 851.0
+offset_bottom = 107.0
+text = "Book Of Shadows"
+
+[node name="book_of_shadows" parent="." instance=ExtResource("7_lhnra")]
+visible = false
+z_index = 4
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 37.0
+offset_bottom = 35.0
+
+[connection signal="button_down" from="SpawnButton" to="." method="_on_spawn_button_button_down"]
+[connection signal="button_up" from="SpawnButton" to="." method="_on_spawn_button_button_up"]
+[connection signal="value_changed" from="SummonProgress" to="." method="_on_summon_progress_value_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
