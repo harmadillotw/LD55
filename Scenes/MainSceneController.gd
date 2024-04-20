@@ -268,6 +268,7 @@ func stop_summmon_sound():
 	spawn_player.stop()
 
 
-func _on_button_2_pressed():
+func _on_button_2_pressed():	
 	play_sound(click_sound)
+	Global.spawn_active = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenuScene1.tscn")

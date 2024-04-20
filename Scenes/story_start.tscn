@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bu5iibqy135b5"]
 
-[ext_resource type="Script" path="res://stroy_start.gd" id="1_0r5q6"]
+[ext_resource type="Script" path="res://Scripts/stroy_start.gd" id="1_0r5q6"]
 [ext_resource type="AudioStream" uid="uid://yafxan127jfu" path="res://Sounds/click.wav" id="2_3n5gu"]
 
 [node name="Control" type="Control"]

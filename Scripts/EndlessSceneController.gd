@@ -339,6 +339,7 @@ func _on_v_continue_button_pressed():
 
 func _on_v_exit_button_pressed():
 	await play_sound(click_sound)
+	Global.spawn_active = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenuScene1.tscn")
 
 
