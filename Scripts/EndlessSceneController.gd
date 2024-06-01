@@ -57,10 +57,10 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	$SuccessfulSummons.text = "Successful Summons\r\n" + str(Global.successful_summons)
 	_create_new_validation()
-	spawn_player = AudioStreamPlayer.new()
-	add_child(spawn_player)
-	spawn_player.volume_db = Global.fxVolume
-	$AudioStreamPlayer.volume_db = Global.fxVolume
+	#spawn_player = AudioStreamPlayer.new()
+	#add_child(spawn_player)
+	#spawn_player.volume_db = Global.fxVolume
+	#$AudioStreamPlayer.volume_db = Global.fxVolume
 	$SummonAudioStreamPlayer.volume_db = Global.fxVolume
 	inv_slot1_location = get_node("inv_ui_2d/ui_slot_1")
 	inv_slot2_location = get_node("inv_ui_2d/ui_slot_2")
@@ -197,26 +197,25 @@ func spawn_summon(id):
 		Global.spawn_active = true
 		if (id == 2):
 			spawnInstance = eye_monster_node.instantiate()
-			play_summmon_sound(eye_sound)
+			MasterAudioStreamPlayer.play_fx(eye_sound)
 		elif (id == 1):
 			spawnInstance = spawn_node.instantiate()
 			spawnInstance.set_texture(ghost_texture)
-			play_summmon_sound(ghost_sound)
+			MasterAudioStreamPlayer.play_fx(ghost_sound)
 		elif (id == 3):
 			spawnInstance = spawn_node.instantiate()
 			spawnInstance.set_texture(tentacle_texture)
 		elif (id == 4):
 			spawnInstance = spawn_node.instantiate()
 			spawnInstance.set_texture(mantis_texture)
-			play_summmon_sound(mantis_sound)
+			MasterAudioStreamPlayer.play_fx(mantis_sound)
 		elif (id == 5):
 			spawnInstance = spawn_node.instantiate()
 			spawnInstance.set_texture(demon_texture)
 		spawnInstance.position = spawnLocation.global_position
 		spawnInstance.id = id
 		Global.ghost1_summon_count += 1
-		$AudioStreamPlayer.stream = summon_success_sound
-		$AudioStreamPlayer.play()
+		MasterAudioStreamPlayer.play_fx(summon_success_sound)
 		add_child(spawnInstance)
 
 
@@ -313,7 +312,7 @@ func play_dialog():
 
 
 func _on_button_pressed():
-	play_sound(click_sound)
+	MasterAudioStreamPlayer.play_fx(click_sound)
 	$book_of_shadows.visible = true
 
 func play_sound(sound):

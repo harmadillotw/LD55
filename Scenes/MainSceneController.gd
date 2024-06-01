@@ -67,12 +67,12 @@ func _ready():
 	noise.noise_type = FastNoiseLite.DOMAIN_WARP_SIMPLEX
 	noise.frequency = 0.3
 	camera = get_node("Camera2D")
-	spawn_dragable(candle_texture, inv_slot1_location.global_position, 1)
-	spawn_dragable(dagger_texture, inv_slot2_location.global_position, 2)
-	spawn_dragable(chalice_texture, inv_slot3_location.global_position, 3)
-	spawn_dragable(crystal_texture, inv_slot4_location.global_position, 4)
-	spawn_dragable(salt_texture, inv_slot5_location.global_position, 5)
-	spawn_dragable(herbs_texture, inv_slot6_location.global_position, 6)
+	spawn_dragable(candle_texture, inv_slot1_location.global_position, 1, "candle")
+	spawn_dragable(dagger_texture, inv_slot2_location.global_position, 2, "dagger")
+	spawn_dragable(chalice_texture, inv_slot3_location.global_position, 3, "chalice")
+	spawn_dragable(crystal_texture, inv_slot4_location.global_position, 4, "crystal")
+	spawn_dragable(salt_texture, inv_slot5_location.global_position, 5, "salt")
+	spawn_dragable(herbs_texture, inv_slot6_location.global_position, 6, "herbs")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -123,13 +123,14 @@ func validate_spawn( spawn_validation) -> bool:
 		if  Global.object_at_postion[n] != spawn_validation[n-1]:
 			valid = false
 	return valid
-func spawn_dragable(dragTexture, inv_loc, id):
+func spawn_dragable(dragTexture, inv_loc, id, name):
 	var dragInstance = dragable_node.instantiate()
 	dragInstance.set_texture(dragTexture)
 	dragInstance.position = inv_loc
 	dragInstance.inventory_location = inv_loc;
 	dragInstance.id = id
 	dragInstance.item_location = 0
+	dragInstance.name = name
 	add_child(dragInstance)
 		
 func spawn_summon(id):
@@ -192,6 +193,7 @@ func play_dialog():
 	var dialog_length = 0
 	
 	if spawnInstance.id == 1:
+		
 		if !Global.active_pages.has(2):
 			Global.active_pages.append(2)
 			Global.max_page += 1
@@ -202,6 +204,9 @@ func play_dialog():
 		elif Global.ghost1_summon_count == 1:
 			spawn_dialog = Global.ghost_dialog_ghost_1
 			summoner_dialog = Global.ghost_dialog_reply_1
+			#$SpawnDialog.visible = true
+			#$SpawnDialog.set_dialog(Global.ghost_dialog_ghost_1)
+			#await $SpawnDialog.dialog_complete
 			dialog_length = 4
 		else:
 			spawn_dialog = Global.ghost_dialog_ghost_2
@@ -235,20 +240,29 @@ func play_dialog():
 		spawn_dialog = Global.demon_dialog_demon_1
 		summoner_dialog = Global.demon_dialog_reply_1
 		dialog_length = 4
+	
 	for n in range(0,dialog_length):	
+		#$SummonerDialog/summoner_text.text = ""
+		$SummonerDialog.visible = false
 		$SpawnDialog.visible = true
-		$SpawnDialog/spawn_text.text = spawn_dialog[n];
-		$SummonerDialog/summoner_text.text = ""
-		$SummonerDialog.visible = false
-		await get_tree().create_timer(text_delay).timeout
-		$SummonerDialog.visible = true
-		$SummonerDialog/summoner_text.text = summoner_dialog[n]
-		$SpawnDialog/spawn_text.text = ""
+		$SpawnDialog.set_dialog(Global.ghost_dialog_ghost_1[n])
+		await $SpawnDialog.dialog_complete
+		#$SpawnDialog/spawn_text.text = spawn_dialog[n]
+		
+		
+		
 		$SpawnDialog.visible = false
-		await get_tree().create_timer(text_delay).timeout
+		await get_tree().create_timer(0.2).timeout
+		$SummonerDialog.visible = true
+		$SummonerDialog.set_dialog(summoner_dialog[n])
+		await $SummonerDialog.dialog_complete
+		#$SpawnDialog/spawn_text.text = ""
+		
+		#await get_tree().create_timer(text_delay).timeout
 		$SummonerDialog.visible = false
-		$SpawnDialog/spawn_text.text = ""
-		$SummonerDialog/summoner_text.text = ""
+		#$SpawnDialog/spawn_text.text = ""
+		#$SummonerDialog/summoner_text.text = ""
+		await get_tree().create_timer(0.2).timeout
 	
 
 

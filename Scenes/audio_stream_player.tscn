@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Scripts/AudioStreamPlayer.gd" id="1_hy0td"]
 
-[node name="MusicStreamPlayer" type="AudioStreamPlayer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 script = ExtResource("1_hy0td")

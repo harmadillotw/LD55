@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://uk4v4fmsyn3c" path="res://Sounds/place.wav" id="3_0tbc2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg742"]
-size = Vector2(72, 72)
+size = Vector2(66, 63)
 
 [node name="DragableSprite" type="Sprite2D"]
 z_index = 1
@@ -13,10 +13,10 @@ position = Vector2(128, 84)
 texture = ExtResource("1_djnah")
 script = ExtResource("2_f531c")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["dragable_sprite"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 0)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_dg742")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

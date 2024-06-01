@@ -12,6 +12,5 @@ func _process(delta):
 
 
 func _on_exit_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_packed(pre_main_menu)

@@ -16,8 +16,8 @@ var allow_spawn = true
 var spawnLifeTime = 10.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MusicStreamPlayer.play_music_game()
-	$AudioStreamPlayer.volume_db = Global.fxVolume
+	#MasterAudioStreamPlayer.play_music_game()
+	#$AudioStreamPlayer.volume_db = Global.fxVolume
 	spawnLocation = get_node("SummoningCircle/Spawn_location")
 
 
@@ -53,47 +53,39 @@ func summonSpawn(id):
 
 
 func _on_play_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_file("res://Scenes/story_start.tscn")
 
 
 func _on_options_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_file("res://Scenes/options_menu.tscn")
 
 
 func _on_instructions_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_file("res://Scenes/book_of_instructions.tscn")
 
 
 func _on_solutions_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_file("res://Scenes/book_of_solutions.tscn")
 
 
 func _on_credits_play_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_file("res://Scenes/book_of_credits.tscn")
 
 func _on_exit_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().quit()
 
 
 func _on_solutions_play_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_file("res://Scenes/book_of_solutions.tscn")
 
 
 func _on_endless_play_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_file("res://Scenes/endless_start.tscn")

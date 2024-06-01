@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4xi57j8x4tms"]
+[gd_scene load_steps=11 format=3 uid="uid://c4xi57j8x4tms"]
 
 [ext_resource type="PackedScene" uid="uid://c222oad4csdrv" path="res://Scenes/summoning_circle.tscn" id="1_gs3xd"]
 [ext_resource type="Script" path="res://Scenes/MainSceneController.gd" id="1_spnmw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bfstr68wuniam" path="res://Items/inv_ui_2d.tscn" id="6_ysupv"]
 [ext_resource type="PackedScene" uid="uid://bjywmc0pf7e61" path="res://Scenes/book_of_shadows.tscn" id="7_lhnra"]
 [ext_resource type="AudioStream" uid="uid://bkj006jnts1s0" path="res://Sounds/summon.ogg" id="8_drr2j"]
+[ext_resource type="PackedScene" uid="uid://b3a5nf0i7wujq" path="res://Scenes/dialog.tscn" id="9_najkm"]
 [ext_resource type="Texture2D" uid="uid://dllnkviwqat5m" path="res://Images/dialog_back.png" id="9_nv0bs"]
 
 [node name="Main" type="Node2D"]
@@ -69,32 +70,15 @@ stream = ExtResource("8_drr2j")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="SpawnDialog" type="NinePatchRect" parent="."]
-visible = false
-z_index = 4
-offset_left = 75.0
-offset_top = 4.0
-offset_right = 498.0
-offset_bottom = 155.0
-texture = ExtResource("9_nv0bs")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+[node name="SpawnDialog" parent="." instance=ExtResource("9_najkm")]
 
-[node name="spawn_text" type="Label" parent="SpawnDialog"]
-z_index = 2
-layout_mode = 0
-offset_left = 10.0
-offset_top = 8.0
-offset_right = 415.0
-offset_bottom = 144.0
-theme_type_variation = &"HeaderMedium"
-theme_override_colors/font_color = Color(0, 0.203922, 0, 1)
-horizontal_alignment = 1
-autowrap_mode = 2
+[node name="SummonerDialog" parent="." instance=ExtResource("9_najkm")]
+offset_left = 56.0
+offset_top = 357.0
+offset_right = 516.0
+offset_bottom = 481.0
 
-[node name="SummonerDialog" type="NinePatchRect" parent="."]
+[node name="SummonerDialog_old" type="NinePatchRect" parent="."]
 visible = false
 z_index = 4
 offset_left = 56.0
@@ -107,7 +91,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="summoner_text" type="Label" parent="SummonerDialog"]
+[node name="summoner_text" type="Label" parent="SummonerDialog_old"]
 layout_mode = 0
 offset_right = 460.0
 offset_bottom = 120.0

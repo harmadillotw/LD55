@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3a5nf0i7wujq"]
+
+[ext_resource type="Texture2D" uid="uid://dllnkviwqat5m" path="res://Images/dialog_back.png" id="1_jptbb"]
+[ext_resource type="Script" path="res://Scenes/dialog.gd" id="2_22gub"]
+
+[node name="SpawnDialog" type="NinePatchRect"]
+visible = false
+z_index = 4
+offset_left = 75.0
+offset_top = 4.0
+offset_right = 498.0
+offset_bottom = 155.0
+texture = ExtResource("1_jptbb")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+script = ExtResource("2_22gub")
+
+[node name="spawn_text" type="Label" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 415.0
+offset_bottom = 144.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(0, 0.203922, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 2

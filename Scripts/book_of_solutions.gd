@@ -15,20 +15,19 @@ func _process(delta):
 
 
 func _on_exit_button_pressed():
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_packed(pre_main_menu)
 
 
 func _on_next_button_pressed():
-	$AudioStreamPlayer.play()
+	MasterAudioStreamPlayer.play_fx_click()
 	page += 1
 	if page > max_pages:
 		page = max_pages
 	load_page()
 
 func _on_previous_button_pressed():
-	$AudioStreamPlayer.play()
+	MasterAudioStreamPlayer.play_fx_click()
 	page -= 1
 	if page < 1 :
 		page = 1

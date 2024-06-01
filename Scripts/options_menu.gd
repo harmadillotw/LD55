@@ -24,13 +24,14 @@ func _process(delta):
 
 
 func _on_exit_button_pressed():
+	MasterAudioStreamPlayer.play_fx_click()
 	get_tree().change_scene_to_packed(pre_main_menu)
 
 
 func _on_h_slider_value_changed(value):
 	Global.musicVolume = value
 	
-	MusicStreamPlayer.set_volume(value)
+	MasterAudioStreamPlayer.set_volume(value)
 	if user_prefs:
 		user_prefs.music_volume = value
 		user_prefs.save()

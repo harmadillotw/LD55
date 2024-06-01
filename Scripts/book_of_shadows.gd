@@ -12,19 +12,19 @@ func _process(delta):
 
 
 func _on_exit_button_pressed():
-	$AudioStreamPlayer.play()
+	MasterAudioStreamPlayer.play_fx_click()
 	self.visible = false
 
 
 func _on_next_button_pressed():
-	$AudioStreamPlayer.play()
+	MasterAudioStreamPlayer.play_fx_click()
 	page += 1
 	if page > Global.max_page:
 		page = Global.max_page
 	load_page()
 
 func _on_previous_button_pressed():
-	$AudioStreamPlayer.play()
+	MasterAudioStreamPlayer.play_fx_click()
 	page -= 1
 	if page < 1 :
 		page = 1
